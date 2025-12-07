@@ -139,12 +139,12 @@ div.warning {
 	border-radius: 2mm;
 	width: 100%;
 }
-div.warning h1 {
+div.warning h2 {
 	margin: 0;
 	font-size: 2em;
 	padding: 0;
 }
-div.warning h2 {
+div.warning p {
 	margin: 0;
 	font-size: 1.5em;
 	padding: 0;
@@ -171,4 +171,8 @@ div.mainArea:has(div:only-child),
 div.mainArea:has(table:only-child) {
 	flex-grow: 1;
 	justify-content: center;
+}
+
+div.settingsBlock.disabled {
+	display: none;
 }

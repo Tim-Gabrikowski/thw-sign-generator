@@ -9,29 +9,89 @@
 	<body>
 		<div id="controls">
 			<h1>Türschild Generator</h1>
-			<h2>Generelles</h2>
-			<label for="roomNumberInput">Raumnummer</label>
-			<input
-				type="text"
-				id="roomNumberInput"
-				placeholder="Hier eingeben"
-			/>
-			<br />
-			<label for="roomNameInput">Raumname</label>
-			<input type="text" id="roomNameInput" placeholder="Hier eingeben" />
-			<h2>Blöcke</h2>
+			<div class="settingsBlock">
+				<h2>Raum</h2>
+				<div class="input">
+					<label for="roomNumberInput">Raumnummer</label>
+					<input
+						type="text"
+						id="roomNumberInput"
+						placeholder="Hier eingeben"
+					/>
+				</div>
+				<div class="input">
+					<label for="roomNameInput">Raumname</label>
+					<input
+						type="text"
+						id="roomNameInput"
+						placeholder="Hier eingeben"
+					/>
+				</div>
+			</div>
+			<div class="settingsBlock">
+				<h2>Blöcke</h2>
+				<div class="input">
+					<input
+						type="checkbox"
+						name="displayPersonsBlock"
+						id="displayPersonsBlock"
+					/><label for="displayPersonsBlock">Personen</label>
+				</div>
+				<div class="input">
+					<input
+						type="checkbox"
+						name="displayWarningBlock"
+						id="displayWarningBlock"
+					/><label for="displayWarningBlock">Warnschild</label>
+				</div>
+				<div class="input">
+					<input
+						type="checkbox"
+						name="displayImageBlock"
+						id="displayImageBlock"
+					/><label for="displayImageBlock">Bild</label>
+				</div>
+			</div>
+			<div class="settingsBlock">
+				<h2>Personen</h2>
+			</div>
+			<div class="settingsBlock">
+				<h2>Warnschild</h2>
+				<div class="input">
+					<label for="warningHeadingInput">Überschrift</label>
+					<input
+						type="text"
+						name="warningHeadingInput"
+						id="warningHeadingInput"
+					/>
+				</div>
+				<div class="input">
+					<label for="warningTextInput">Text</label>
+					<input
+						type="text"
+						name="warningTextInput"
+						id="warningTextInput"
+					/>
+				</div>
+			</div>
+			<div class="settingsBlock">
+				<h2>Bild</h2>
+			</div>
+			<div class="buttonBox">
+				<button id="previewButton">Vorschau</button>
+			</div>
 		</div>
 		<div id="preview">
 			<div class="page">
-				<div class="roomNr"><h1>R 12</h1></div>
-				<div class="roomName"><h1>Verwaltungsbüro</h1></div>
+				<div class="roomNr"><h1>R-Nr</h1></div>
+				<div class="roomName"><h1>Raumname</h1></div>
 				<div class="logo">
 					<img
 						src="./logo/logo-ov.svg"
 						alt="Technisches Hilfswerk Ortsverband Hamburg-Mitte"
 					/>
 				</div>
-				<div class="mainArea">
+				<div class="mainArea" id="mainArea">
 					<!-- <table class="persons">
 						<tr>
 							<td class="name important">Name</td>
@@ -57,4 +117,15 @@
 			</div>
 		</div>
 	</body>
+	<script src="configuration.js"></script>
+	<script src="render.js"></script>
+	<script>
+		function generatePreview() {
+			let configuration = getCurrentConfiguration();
+			renderPreview(configuration);
+		}
+		document
+			.getElementById("previewButton")
+			.addEventListener("click", generatePreview);
+	</script>
 </html>
