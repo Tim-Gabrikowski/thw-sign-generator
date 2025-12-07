@@ -83,7 +83,8 @@ function getWarningBlockInfo() {
 
 function getImageBlockInfo() {
 	return {
-		enabled: imageBlockEnableInput.checked,
+		enabled:
+			imageBlockEnableInput.checked && imageSelectInput.files.length > 0,
 		file: document.getElementById("imageSelectInput").files[0],
 	};
 }

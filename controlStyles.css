@@ -105,15 +105,12 @@ label#imageSelectLabel p {
 
 .button,
 button {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
 	padding: 0.5em;
 	background-color: #ccc;
 	cursor: pointer;
 	border: none;
+
+	text-align: center;
 }
 .button:hover,
 button:hover {
@@ -121,6 +118,23 @@ button:hover {
 	cursor: pointer;
 }
 
+.button {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
 .fileSelected {
 	background-color: rgb(170, 255, 186);
+}
+
+#controlButtons {
+	display: flex;
+	gap: 1em;
+	justify-content: center;
+	padding: 1em;
+	padding-bottom: 0;
+	border-top: 1px solid #ccc;
 }

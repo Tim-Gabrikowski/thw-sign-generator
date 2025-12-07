@@ -6,8 +6,6 @@ const convert_to_base64 = (file) =>
 	});
 
 async function renderPreview(configuration) {
-	console.log("Rendering preview with configuration:", configuration);
-
 	// fill the header
 	let roomNameElement = document.getElementById("roomName");
 	roomNameElement.textContent = configuration.roomName;
@@ -15,27 +13,31 @@ async function renderPreview(configuration) {
 	let roomNumberElement = document.getElementById("roomNumber");
 	roomNumberElement.textContent = configuration.roomNumber;
 
-	// fill the main Area
-	let mainArea = document.getElementById("mainArea");
-	// Clear existing content
-	mainArea.innerHTML = "";
+	let renderFrame = document.createElement("div");
+	renderFrame.classList.add("mainArea");
+	renderFrame.id = "mainArea";
 
 	// Add blocks based on configuration
 
 	if (configuration.blocks.persons.enabled) {
 		let personsBlock = generatePersonsBlock(configuration.blocks.persons);
-		mainArea.appendChild(personsBlock);
+		renderFrame.appendChild(personsBlock);
 	}
 
 	if (configuration.blocks.warning.enabled) {
 		let warningBlock = generateWarningBlock(configuration.blocks.warning);
-		mainArea.appendChild(warningBlock);
+		renderFrame.appendChild(warningBlock);
 	}
 
 	if (configuration.blocks.image.enabled) {
 		let imageBlock = await generateImageBlock(configuration.blocks.image);
-		mainArea.appendChild(imageBlock);
+		renderFrame.appendChild(imageBlock);
 	}
+
+	// fill the main Area
+	let mainArea = document.getElementById("mainArea");
+
+	mainArea.parentNode.replaceChild(renderFrame, mainArea);
 }
 
 // Generates a table element representing the persons block
