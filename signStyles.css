@@ -164,7 +164,7 @@ div.image {
 	padding: 0.5em;
 	text-align: center;
 	border-radius: 2mm;
-	border: 1mm solid black;
+	border: 1mm solid var(--main-color);
 	width: 50%;
 	aspect-ratio: 1;
 	display: flex;
